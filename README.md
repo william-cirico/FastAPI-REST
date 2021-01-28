@@ -41,8 +41,8 @@ utilizar o PostgreSQL basta seguir os seguintes passos:
 ```
 SQLALCHEMY_DATABASE_URL = "postgresql://usuario:senha@server/nome_banco"
 ``` 
-3. Comentar a linha 9 no arquivo ```database.py```:
-![database](https://user-images.githubusercontent.com/69127474/106083936-16793780-60fc-11eb-8e49-48d5c80fff0d.PNG)
+3. Comentar as linhas indicadas no arquivo ```database.py```:
+![image](https://user-images.githubusercontent.com/69127474/106213071-b097b900-61aa-11eb-9a04-5cb84f05e8d0.png)
 
 ## Uso
 Com o ambiente virtual ativado digite o seguinte comando no terminal:
