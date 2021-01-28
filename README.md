@@ -4,28 +4,28 @@ Exemplo de REST API em Python com FastAPI
 
 ## Instalação
 
-O primeiro passo da instalação é criar um ambiente virtual no diretório do projeto:
+O primeiro passo da instalação é criar um ambiente virtual no diretório do projeto.
 
-Comando para Windows:
+**Comando para Windows:**
 ```
 C:\Users\Name\FastAPI-REST> python -m venv venv
 ```
 
-Comando para Linux e OS X :
+**Comando para Linux e OS X :**
 ```
-$ python -m venv venv
+$ python3 -m venv venv
 ```
 
-Após isso é necessário ativar o ambiente virtual:
+Após isso é necessário ativar o ambiente virtual.
 
-Comando para Windows:
+**Comando para Windows:**
 ```
 C:\Users\Name\FastAPI-REST> venv\Scripts\activate
 ```
 
-Comando para Linux e OS X:
+**Comando para Linux e OS X:**
 ```
-$ source myvenv/bin/activate
+$ source venv/bin/activate
 ```
 
 Com seu ambiente virtual ativado você deve instalar os pacotes necessários para o projeto:
@@ -51,5 +51,8 @@ uvicorn app.main:app
 ```
 Para visualizar a documentação da API e testa-lá basta acessar o link:
 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+Se tudo deu certo você deve visualizar a seguinte tela:
+![docs](https://user-images.githubusercontent.com/69127474/106085512-1c244c80-60ff-11eb-8758-dd642a4463ac.PNG)
 
 
