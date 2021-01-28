@@ -1,6 +1,6 @@
-from datetime import date, time
+from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ClientBase(BaseModel):
@@ -22,28 +22,33 @@ class Client(ClientBase):
     id: int
 
     class Config:
-        schema_extra = {
-            'example': {
-                'id': 1,
-                'cpf': '049.143.320-42',
-                'name': 'Foo'
-            }
-        }
 
         orm_mode = True
 
 
 class OrderBase(BaseModel):
-    client_id: int
     description: str
-    price: float
+    price: float = Field(..., gt=0)
 
 
 class OrderCreate(OrderBase):
-    pass
+    client_id: int
+
+    class Config:
+        schema_extra = {
+            'example': {
+                'description': 'Caneta',
+                'price': 2.50,
+                'client_id': 1
+            }
+        }
 
 
 class Order(OrderBase):
     id: int
-    date: date
-    time: time
+    date: datetime
+    client: Client
+
+    class Config:
+
+        orm_mode = True

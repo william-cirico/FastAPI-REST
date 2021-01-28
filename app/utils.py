@@ -61,5 +61,6 @@ def is_cpf_valid(cpf) -> Union[str, bool]:
 
     cpf_without_check_digits = cpf[:-2]
     validator_cpf = cpf_without_check_digits + generate_check_digits(cpf_without_check_digits)
+    sequency = validator_cpf == validator_cpf[0] * len(validator_cpf)
 
-    return cpf == validator_cpf
+    return cpf == validator_cpf and not sequency

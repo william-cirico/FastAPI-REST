@@ -1,4 +1,5 @@
 from sqlalchemy import Column, DateTime, Integer, Float, ForeignKey, String
+from sqlalchemy.orm import relationship
 
 from .database import Base
 
@@ -10,6 +11,8 @@ class Client(Base):
     cpf = Column(String, unique=True)
     name = Column(String)
 
+    orders = relationship('Order', back_populates='client', cascade="all, delete")
+
 
 class Order(Base):
     __tablename__ = 'orders'
@@ -18,4 +21,6 @@ class Order(Base):
     description = Column(String)
     price = Column(Float)
     date = Column(DateTime)
-    client_id = (Integer, ForeignKey('clients.id'))
+    client_id = Column(Integer, ForeignKey('clients.id', ondelete='CASCADE'))
+
+    client = relationship('Client', back_populates='orders')

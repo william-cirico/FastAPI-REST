@@ -56,6 +56,23 @@ def get_client_by_id(client_id: int, db: Session = Depends(get_db)):
     return client
 
 
+@router.get(
+    '/{client_id}/orders',
+    response_description='Lista com os pedidos do cliente',
+    response_model=List[schemas.Order],
+    summary='Lista todos os pedidos de um cliente'
+)
+def get_orders_from_client(client_id: int, db: Session = Depends(get_db)):
+    """
+    Retorna uma lista com todos os pedidos do cliente informado.
+    """
+    client = crud.get_client_by_id(db, client_id)
+    if not client:
+        raise HTTPException(404, detail='Usuário com o ID informado não está cadastrado.')
+
+    return client.orders
+
+
 @router.put(
     '/{client_id}',
     response_description='O cliente com os dados atualizados',
