@@ -11,7 +11,7 @@ class Client(Base):
     cpf = Column(String, unique=True)
     name = Column(String)
 
-    orders = relationship('Order', back_populates='client', cascade="all, delete")
+    orders = relationship('Order', back_populates='client')
 
 
 class Order(Base):
@@ -21,6 +21,6 @@ class Order(Base):
     description = Column(String)
     price = Column(Float)
     date = Column(DateTime)
-    client_id = Column(Integer, ForeignKey('clients.id', ondelete='CASCADE'))
+    client_id = Column(Integer, ForeignKey('clients.id', ondelete='cascade'))
 
     client = relationship('Client', back_populates='orders')
